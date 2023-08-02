@@ -1,0 +1,57 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class ContactBookApp:
+    def __init__(self,root):
+        self.root = root
+        self.root.title("Contact Book")
+        self.contacts = {}
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.lbl_name = tk.Label(self.root, text="Name:")
+        self.lbl_name.grid(row=0, column=0, padx=5, pady=5)
+
+        self.entry_name = tk.Entry(self.root)
+        self.entry_name.grid(row=0, column=1, padx=5, pady=5)
+
+        self.lbl_phone = tk.Label(self.root, text="Phone:")
+        self.lbl_phone.grid(row=1, column=0, padx=5, pady=5)
+
+        self.entry_phone = tk.Entry(self.root)
+        self.entry_phone.grid(row=1, column=1, padx=5, pady=5)
+
+        self.btn_add = tk.Button(self.root, text="Add Contact", command=self.add_contact)
+        self.btn_add.grid(row=2, column=0, columnspan=2, padx=5, pady=10)
+
+        self.listbox = tk.Listbox(self.root, selectmode=tk.SINGLE)
+        self.listbox.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
+
+        self.btn_view = tk.Button(self.root, text="View Contacts", command=self.view_contacts)
+        self.btn_view.grid(row=4, column=0, columnspan=2, padx=5, pady=10)
+
+    def add_contact(self):
+        name = self.entry_name.get()
+        phone = self.entry_phone.get()
+
+        if name and phone:
+            self.contacts[name] = phone
+            self.entry_name.delete(0, tk.END)
+            self.entry_phone.delete(0, tk.END)
+            messagebox.showinfo("Success", "Contact added succesfully!")
+        else:
+            messagebox.showwarning("Error", "Please enter name and phone number.")
+
+    def view_contacts(self):
+        self.listbox.delete(0, tk.END)
+        if self.contacts:
+            for name, phone in self.contacts.items():
+                self.listbox.insert(tk.END, f"{name}: {phone}")
+        else:
+            messagebox.showinfo("Empty", "There are no contacts found.")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ContactBookApp(root)
+    root.mainloop()
