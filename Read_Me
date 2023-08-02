@@ -1,0 +1,21 @@
+# Contact Book with GUI
+
+Contact Book is a simple Python application with a graphical user interface (GUI) that allows you to manage your contacts efficiently. It provides a user-friendly interface to add, view, and store your contacts.
+
+## Features
+
+- Add contacts: You can add a contact by providing their name and phone number.
+- View contacts: View all the saved contacts in a list format.
+- Error handling: The application displays appropriate error messages if the user misses any information while adding a contact.
+
+## Requirements
+
+- Python 3.x
+- Tkinter (should be pre-installed with Python 3.x)
+
+## How to Run
+
+1. Clone the repository or download the source code from [GitHub](https://github.com/your-username/Contact-Book-App).
+2. Open a terminal or command prompt and navigate to the project directory.
+3. Run the following command to start the Contact Book application:
+
